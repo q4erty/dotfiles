@@ -1,0 +1,120 @@
+/* ════════════════════════════════════════════════════════════════
+   Waybar — Minimal dark (no nerd fonts required)
+   Workspaces: active = normal number, inactive = tiny (looks like dot)
+   ════════════════════════════════════════════════════════════════ */
+
+* {
+    font-family: "JetBrains Mono", "Iosevka", "Fira Code", monospace;
+    font-size: 11px;
+    font-weight: 400;
+    border: none;
+    border-radius: 0;
+    outline: none;
+    box-shadow: none;
+    min-height: 0;
+    padding: 0;
+    margin: 0;
+}
+
+/* ── Bar ──────────────────────────────────────────────────────── */
+window#waybar {
+    background-color: rgba(8, 8, 8, 0.90);
+    color: #c8c8c8;
+}
+
+/* ── Left / Center / Right ────────────────────────────────────── */
+.modules-left   { padding: 0 4px; }
+.modules-center { padding: 0 8px; }
+.modules-right  { padding: 0 6px; }
+
+/* ── Workspaces ────────────────────────────────────────────────── */
+#workspaces {
+    padding: 0;
+}
+
+#workspaces button {
+    /* Inactive: tiny number looks like a dot */
+    font-size: 5px;
+    color: #484848;
+    background: transparent;
+    padding: 0 4px;
+    min-width: 14px;
+    min-height: 22px;
+    transition: all 0.12s ease;
+}
+
+/* Active: full-size number, bright */
+#workspaces button.active {
+    font-size: 11px;
+    font-weight: 600;
+    color: #d8d8d8;
+    background: transparent;
+}
+
+/* Urgent */
+#workspaces button.urgent {
+    font-size: 11px;
+    color: #e06c75;
+}
+
+/* Hover on inactive */
+#workspaces button:hover {
+    background: transparent;
+    font-size: 8px;
+    color: #888;
+    box-shadow: none;
+}
+
+/* ── Clock ─────────────────────────────────────────────────────── */
+#clock {
+    color: #c0c0c0;
+    padding: 0 6px;
+}
+
+/* ── Right modules ─────────────────────────────────────────────── */
+#memory,
+#cpu,
+#battery,
+#network {
+    color: #888;
+    padding: 0 6px;
+    transition: color 0.15s ease;
+}
+
+#memory:hover,
+#cpu:hover,
+#battery:hover,
+#network:hover {
+    color: #c8c8c8;
+}
+
+/* Subtle separator between right modules */
+#memory   { border-left: 1px solid #1e1e1e; }
+#cpu      { border-left: 1px solid #1e1e1e; }
+#battery  { border-left: 1px solid #1e1e1e; }
+#network  { border-left: 1px solid #1e1e1e; margin-right: 2px; }
+
+/* ── Battery states ────────────────────────────────────────────── */
+#battery.warning {
+    color: #d4a843;
+}
+
+#battery.critical {
+    color: #e06c75;
+    animation: blink 1.2s ease-in-out infinite alternate;
+}
+
+@keyframes blink {
+    from { color: #e06c75; }
+    to   { color: #555;    }
+}
+
+/* ── Tooltip ───────────────────────────────────────────────────── */
+tooltip {
+    background: rgba(8, 8, 8, 0.96);
+    color: #c0c0c0;
+    border: 1px solid #2a2a2a;
+    border-radius: 0;
+    font-size: 10px;
+    padding: 4px 8px;
+}
